@@ -1,0 +1,38 @@
+<html>
+
+
+<head>
+    This is another JSON-P AJAX example.
+</head>
+
+
+
+<script type = "text/javascript" src = "jquery-3.4.1.min.js"> </script>
+<script type = "text/javascript">
+$(document).ready(
+
+function()
+{
+
+$.getJSON("http://localhost/servertime.php?format=JSON&callback=?",
+
+function(data)
+{
+  $("#dateID").html(data.date);
+});
+
+}
+
+);
+</script>
+
+
+
+<body>
+
+<div id="dateID"> </div>
+
+</body>
+
+
+</html>

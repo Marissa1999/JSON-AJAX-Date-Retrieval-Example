@@ -1,0 +1,73 @@
+<html>
+
+
+<head>
+    This is another JSON AJAX example.
+</head>
+
+
+
+<script type = "text/javascript" src = "json2.js"> </script>
+<script type = "text/javascript">
+if(typeof XDomainRequest == "undefined")
+	
+XDomainRequest = function()
+{
+	try
+	{
+		return new XMLHttpRequest();
+	}
+	
+	catch(e){} 
+	
+	try
+	{
+		return new ActiveXObject("Msxml2.XMLHTTP.6.0");		
+	}
+	
+	catch(e){}
+	
+	try
+	{
+		return new ActiveXObject("Msxml2.XMLHTTP.3.0");	
+	}
+	
+	catch(e){}
+	
+	try
+	{
+		return new ActiveXObject("Msxml2.XMLHTTP");	
+	}
+	
+	catch(e)
+	{
+		throw new Error("XHR/XDR unsupported.")
+	}
+	
+};
+
+var xdr = new XDomainRequest();
+
+xdr.onload = function()
+{
+
+txt=xdr.responseText;
+myDate = JSON.parse(txt);
+theDate = myDate.date;
+document.getElementById("dateID").innerHTML = theDate;
+}
+
+xdr.open("GET", "http://localhost/servertime.php?format=JSON", true);
+xdr.send(null);
+</script>
+
+
+
+<body>
+
+<div id="dateID"> </div>
+
+</body>
+
+
+</html>
